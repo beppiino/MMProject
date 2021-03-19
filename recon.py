@@ -80,6 +80,7 @@ for i, m in enumerate(metadata):
     img = align_image(img)
     # scale RGB values to interval [0,1]
     img = (img / 255.).astype(np.float32)
+    #img = (img * 255).round().astype(np.float32)
     # obtain embedding vector for image
     embedded[i] = nn4_small2_train.predict(np.expand_dims(img, axis=0))[0]
 
@@ -199,11 +200,7 @@ acc_knn = accuracy_score(y_test, knn.predict(X_test))
 acc_svc = accuracy_score(y_test, svc.predict(X_test))
 
 
-from sklearn.metrics import plot_confusion_matrix
-#print plot_confusion_matrix(y_test, knn.predict(X_test))
 
-display = plot_confusion_matrix(knn, X_test, y_test, display_labels=targets, cmap=plt.cm.Blues)
-#displaySvc = plot_confusion_matrix(svc, X_test, y_test, display_labels=targets, cmap=plt.cm.Blues)
 
 print(f'KNN accuracy = {acc_knn}, SVM accuracy = {acc_svc}')
 
@@ -234,3 +231,21 @@ for i, t in enumerate(set(targets)):
 
 plt.legend(bbox_to_anchor=(1, 1))
 plt.show()
+
+#from sklearn.metrics import plot_confusion_matrix
+#print plot_confusion_matrix(y_test, knn.predict(X_test))
+
+#plot_confusion_matrix(knn, X_test, y_test, display_labels=targets, cmap=plt.cm.Blues)
+#displaySvc = plot_confusion_matrix(svc, X_test, y_test, display_labels=targets, cmap=plt.cm.Blues)
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+from time import time
+
+t0 = time()
+y_pred = svc.predict(X_test)
+print("done in %0.3fs" % (time() - t0))
+
+n_classes = metadata.shape[0]
+
+print(classification_report(y_test, y_pred, target_names=None))
+print(confusion_matrix(y_test, y_pred, labels=range(n_classes)))
