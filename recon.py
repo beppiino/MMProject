@@ -207,7 +207,7 @@ print(f'KNN accuracy = {acc_knn}, SVM accuracy = {acc_svc}')
 # Suppress LabelEncoder warning
 warnings.filterwarnings('ignore')
 
-example_idx = 14
+example_idx = 1
 
 #example_image = load_image('images/Tony_Blair/Tony_Blair_0003.jpg')
 example_image = load_image(metadata[test_idx][example_idx].image_path())
@@ -221,24 +221,23 @@ plt.title(f'Recognized as {example_identity} using SVM')
 plt.gca().add_patch(patches.Rectangle((bb.left(), bb.top()), bb.width(), bb.height(), fill=False, color='red'))
 plt.show()
 
-from sklearn.manifold import TSNE
+# from sklearn.manifold import TSNE
 
-X_embedded = TSNE(n_components=2).fit_transform(embedded)
+# X_embedded = TSNE(n_components=2).fit_transform(embedded)
 
-for i, t in enumerate(set(targets)):
-    idx = targets == t
-    plt.scatter(X_embedded[idx, 0], X_embedded[idx, 1], label=t)
+# for i, t in enumerate(set(targets)):
+#     idx = targets == t
+#     plt.scatter(X_embedded[idx, 0], X_embedded[idx, 1], label=t)
 
-plt.legend(bbox_to_anchor=(1, 1))
-plt.show()
+# plt.legend(bbox_to_anchor=(1, 1))
+# plt.show()
 
-#from sklearn.metrics import plot_confusion_matrix
-#print plot_confusion_matrix(y_test, knn.predict(X_test))
+from sklearn.metrics import plot_confusion_matrix
+#print (plot_confusion_matrix(y_test, knn.predict(X_test)))
 
 #plot_confusion_matrix(knn, X_test, y_test, display_labels=targets, cmap=plt.cm.Blues)
 #displaySvc = plot_confusion_matrix(svc, X_test, y_test, display_labels=targets, cmap=plt.cm.Blues)
 from sklearn.metrics import classification_report
-from sklearn.metrics import confusion_matrix
 from time import time
 
 t0 = time()
@@ -247,5 +246,48 @@ print("done in %0.3fs" % (time() - t0))
 
 n_classes = metadata.shape[0]
 
-print(classification_report(y_test, y_pred, target_names=None))
-print(confusion_matrix(y_test, y_pred, labels=range(n_classes)))
+tg = [
+ "Alessandro_Gassmann",
+ "Ariel_Sharon",
+ "Arnold_Schwarzenegger",
+ "Ben_Affleck",
+ "Brad_Pitt",
+ "Bradley_Cooper",
+ "Chris_Hemsworth",
+ "Christian_DeSica",
+ "Colin_Powell",
+ "Daniel_Radcliffe",
+ "Donald_Rumsfeld",
+ "George_Clooney",
+ "George_W_Bush",
+ "Gerhard_Schroeder",
+ "Halle_Berry",
+ "Harrison_Ford",
+ "Hugo_Chavez",
+ "Jacques_Chirac",
+ "Jennifer_Aniston",
+ "Johnny_Depp",
+ "Julia_Roberts",
+ "KimRossi_Stuart",
+ "Leonardo_Dicaprio",
+ "Luca_Argentero",
+ "Massimo_Boldi",
+ "Matt_Damon",
+ "Matthew_Lewis",
+ "Michelle_Pfeiffer",
+ "Monica_Bellucci",
+ "Nicole_Kidman",
+ "Orlando_Bloom",
+ "Patrick_Dempsey",
+ "Raoul_Bova",
+ "Richard_Gere",
+ "Robert_DownayJr",
+ "Sandra_Bullock",
+ "Tom_Cruise",
+ "Tony_Blair",
+ "Vladimir_Putin",
+ "Will_Smith"
+ ]
+
+print(classification_report(y_test, y_pred, target_names=tg))
+#print(confusion_matrix(y_test, y_pred, labels=range(n_classes)))
