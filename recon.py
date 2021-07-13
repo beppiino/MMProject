@@ -181,12 +181,9 @@ y = encoder.transform(targets)
 train_idx = np.arange(metadata.shape[0]) % 2 != 0
 test_idx = np.arange(metadata.shape[0]) % 2 == 0
 
-print("train index", train_idx)
-print("test_index", test_idx)
-
-#410 train examples of 41 identities (10 examples each)
+#205 train examples of 41 identities (5 examples each)
 X_train = embedded[train_idx]
-#410 test examples of 41 identities (10 examples each)
+#205 test examples of 41 identities (5 examples each)
 X_test = embedded[test_idx]
 
 y_train = y[train_idx]
@@ -209,9 +206,9 @@ print(f'KNN accuracy = {acc_knn}, SVM accuracy = {acc_svc}')
 #Suppress LabelEncoder warning
 warnings.filterwarnings('ignore')
 
-example_idx = 3
+example_idx = 30  #Check why get Brad Pitt ever
 
-#example_image = load_image('images/Tony_Blair/Tony_Blair_0003.jpg')
+#example_image = load_image('images/bellucci.jpg')
 example_image = load_image(metadata[test_idx][example_idx].image_path())
 bb = alignment.getLargestFaceBoundingBox(example_image)
 example_prediction = svc.predict([embedded[test_idx][example_idx]])
