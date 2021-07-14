@@ -43,8 +43,13 @@ metadata = load_metadata('images')
 #Initialize the OpenFace face alignment utility
 alignment = AlignDlib('models/landmarks.dat')
 
+image_one = 371   #First image to pair
+image_pair_right = 394  #Same identity to pair
+image_pair_fake = 25 #Fake identity to pair
+image_test = 174 #Test SVM
+
 #Load an image
-jc_orig = load_image(metadata[0].image_path())
+jc_orig = load_image(metadata[image_one].image_path())
 
 #Detect face and return bounding box
 bb = alignment.getLargestFaceBoundingBox(jc_orig)
@@ -96,8 +101,8 @@ def show_pair(idx1, idx2):
     plt.imshow(load_image(metadata[idx2].image_path()));
 
 #Pair two images
-show_pair(0 , 1)
-show_pair(0, 11)
+show_pair(image_one, image_pair_right)
+show_pair(image_one, image_pair_fake)
 plt.show()
 
 distances = [] #squared L2 distance between pairs
@@ -206,8 +211,8 @@ print(f'KNN accuracy = {acc_knn}, SVM accuracy = {acc_svc}')
 #Suppress LabelEncoder warning
 warnings.filterwarnings('ignore')
 
-example_idx = 30  #Check why get Brad Pitt ever
-
+#Image at test index
+example_idx = image_test
 #example_image = load_image('images/bellucci.jpg')
 example_image = load_image(metadata[test_idx][example_idx].image_path())
 bb = alignment.getLargestFaceBoundingBox(example_image)
@@ -268,8 +273,7 @@ tg = [
       "Tom_Cruise",
       "Tony_Blair",
       "Vladimir_Putin",
-      "Will_Smith",
-      "TEST"
+      "Will_Smith"
       ]
 
 print(classification_report(y_test, y_pred, target_names=tg))

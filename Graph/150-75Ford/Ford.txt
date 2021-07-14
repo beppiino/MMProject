@@ -1,0 +1,49 @@
+KNN accuracy = 0.855, SVM accuracy = 0.915
+Harrison_Ford
+done in 0.002s
+                       precision    recall  f1-score   support
+
+  Alessandro_Gassmann       1.00      0.80      0.89         5
+         Ariel_Sharon       1.00      1.00      1.00         5
+Arnold_Schwarzenegger       0.83      1.00      0.91         5
+          Ben_Affleck       1.00      0.80      0.89         5
+            Brad_Pitt       1.00      0.80      0.89         5
+       Bradley_Cooper       1.00      1.00      1.00         5
+      Chris_Hemsworth       1.00      1.00      1.00         5
+     Christian_DeSica       0.80      0.80      0.80         5
+         Colin_Powell       0.83      1.00      0.91         5
+     Daniel_Radcliffe       1.00      1.00      1.00         5
+      Donald_Rumsfeld       1.00      0.80      0.89         5
+       George_Clooney       0.83      1.00      0.91         5
+        George_W_Bush       1.00      0.80      0.89         5
+    Gerhard_Schroeder       1.00      1.00      1.00         5
+          Halle_Berry       1.00      1.00      1.00         5
+        Harrison_Ford       0.83      1.00      0.91         5
+          Hugo_Chavez       0.83      1.00      0.91         5
+       Jacques_Chirac       0.83      1.00      0.91         5
+     Jennifer_Aniston       1.00      1.00      1.00         5
+          Johnny_Depp       0.80      0.80      0.80         5
+        Julia_Roberts       1.00      1.00      1.00         5
+      KimRossi_Stuart       0.80      0.80      0.80         5
+    Leonardo_Dicaprio       1.00      0.80      0.89         5
+       Luca_Argentero       1.00      1.00      1.00         5
+        Massimo_Boldi       1.00      1.00      1.00         5
+           Matt_Damon       0.83      1.00      0.91         5
+        Matthew_Lewis       1.00      1.00      1.00         5
+    Michelle_Pfeiffer       0.80      0.80      0.80         5
+      Monica_Bellucci       1.00      1.00      1.00         5
+        Nicole_Kidman       0.80      0.80      0.80         5
+        Orlando_Bloom       0.83      1.00      0.91         5
+      Patrick_Dempsey       0.83      1.00      0.91         5
+           Raoul_Bova       1.00      0.80      0.89         5
+         Richard_Gere       0.80      0.80      0.80         5
+      Robert_DownayJr       0.75      0.60      0.67         5
+       Sandra_Bullock       1.00      1.00      1.00         5
+           Tom_Cruise       0.80      0.80      0.80         5
+           Tony_Blair       1.00      0.80      0.89         5
+       Vladimir_Putin       1.00      1.00      1.00         5
+           Will_Smith       1.00      1.00      1.00         5
+
+             accuracy                           0.92       200
+            macro avg       0.92      0.91      0.91       200
+         weighted avg       0.92      0.92      0.91       200
